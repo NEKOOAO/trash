@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: normal
   m_EditorClassIdentifier: 
   type: 0
-  trash_name: 
-  sprite: {fileID: 0}
+  trash_name: normal
+  sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   rigidbody: {fileID: 0}
   collider: {fileID: 0}
