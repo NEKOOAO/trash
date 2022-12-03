@@ -21,10 +21,10 @@ public class SideWalkManager : MonoBehaviour
     public int person_speed; //行人移動速度
     public int total_person; //總人數
     // store
-    private List<GameObject> all_people;
+    public List<GameObject> all_people;
     private void Start()
     {
-        
+        CreatePerson(TrashType.normal, false);
     }
     /// <summary>
     /// 
@@ -36,12 +36,12 @@ public class SideWalkManager : MonoBehaviour
         GameObject new_person;
         if (!entry)
         {
-            new_person = Instantiate(person, left_entry,false);
+            new_person = Instantiate(person, left_entry.position,new Quaternion(0,0,0,0));
             new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(person_speed, 0);
         }
         else
         {
-            new_person = Instantiate(person, right_entry,false);
+            new_person = Instantiate(person, right_entry.position, new Quaternion(0, 0, 0, 0));
             new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(-person_speed, 0);
         }
         new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
