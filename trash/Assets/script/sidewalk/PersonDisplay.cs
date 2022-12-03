@@ -6,6 +6,25 @@ public class PersonDisplay : MonoBehaviour
 {
     public Person person;
 
+    /// <summary>
+    /// 0左1右
+    /// </summary>
+    private bool direction;
+    public bool Direction
+    {
+        get { return direction; }
+    }
+
+    /// <summary>
+    /// 0左1右
+    /// </summary>
+    /// <param name="dir"></param>
+    public void SetDir(bool dir)
+    {
+        direction = dir;
+        
+    }
+
     public void Show()
     {
         this.GetComponent<SpriteRenderer>().sprite = person.sprite;

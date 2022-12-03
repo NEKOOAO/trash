@@ -54,7 +54,7 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
         new_person.GetComponent<PersonDisplay>().SetDir(dir);
         all_people.Add(new_person);
     }
-
+    
     private Person FindPerson(TrashType type)
     {
         Person person;
