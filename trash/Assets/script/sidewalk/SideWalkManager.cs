@@ -34,16 +34,19 @@ public class SideWalkManager : MonoBehaviour
     public void CreatePerson(TrashType type, bool entry)
     {
         GameObject new_person;
+        int walker_speed = 0;
         if (!entry)
         {
             new_person = Instantiate(person, left_entry.position,new Quaternion(0,0,0,0));
-            new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(person_speed, 0);
+            walker_speed = person_speed;
+
         }
         else
         {
             new_person = Instantiate(person, right_entry.position, new Quaternion(0, 0, 0, 0));
-            new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(-person_speed, 0);
+            walker_speed = -person_speed;
         }
+        new_person.GetComponent<Walker>().Walk(walker_speed); //要行人行走
         new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
         new_person.GetComponent<PersonDisplay>().Show();
         all_people.Add(new_person);

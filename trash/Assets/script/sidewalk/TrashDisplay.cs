@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class TrashDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Trash trash;
 
-    // Update is called once per frame
-    void Update()
+    public void Show()
     {
-        
+        this.GetComponent<SpriteRenderer>().sprite = trash.sprite;
     }
 }
