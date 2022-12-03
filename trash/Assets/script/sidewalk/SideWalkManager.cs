@@ -47,11 +47,13 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
             entry = right_entry;
             walker_speed = -person_speed;
         }
+
         new_person = Instantiate(person, entry.position, Quaternion.identity);
         new_person.GetComponent<Walker>().Walk(walker_speed); //要行人行走
         new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
         new_person.GetComponent<PersonDisplay>().Show();
         new_person.GetComponent<PersonDisplay>().SetDir(dir);
+
         all_people.Add(new_person);
     }
 
