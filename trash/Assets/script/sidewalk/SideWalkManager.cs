@@ -44,8 +44,8 @@ public class SideWalkManager : MonoBehaviour
             new_person = Instantiate(person, right_entry,false);
             new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(-person_speed, 0);
         }
-        new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
-        new_person.GetComponent<PersonDisplay>().Show();
+//        new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
+//        new_person.GetComponent<PersonDisplay>().Show();
         all_people.Add(new_person);
     }
 
