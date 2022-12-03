@@ -847,6 +847,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd26c4fc69000cf4592c4c2bfda42b64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: {fileID: 223829098}
+  counter: {fileID: 1041055330}
 --- !u!1 &1674977943
 GameObject:
   m_ObjectHideFlags: 0
