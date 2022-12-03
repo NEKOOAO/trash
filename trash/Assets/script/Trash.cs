@@ -13,7 +13,6 @@ public class Trash : ScriptableObject
     public TrashType type;
     public string trash_name;
     public Sprite sprite;
-    public Rigidbody2D rigidbody;
-    public BoxCollider2D collider;
+
 
 }
