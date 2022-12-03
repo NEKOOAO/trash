@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: can
+    uniqueID: 4186424943
+    locked: 0
+  - name: hold_can
+    uniqueID: 1486143797
+    locked: 0
+  - name: player
+    uniqueID: 272361851
+    locked: 0

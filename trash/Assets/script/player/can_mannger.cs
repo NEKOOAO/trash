@@ -33,7 +33,7 @@ public class can_mannger : MonoBehaviour
         if (collision.CompareTag("can")) col_time++;
         else if (collision.CompareTag("trash"))
         {
-
+            Destroy(collision.gameObject);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
