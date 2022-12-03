@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PersonDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Person person;
 
-    // Update is called once per frame
-    void Update()
+    public void Show()
     {
-        
+        this.GetComponent<SpriteRenderer>().sprite = person.sprite;
+            
     }
 }

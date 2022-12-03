@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SideWalkManager : MonoBehaviour
+public class SideWalkManager : MonoSingleton<SideWalkManager>
 {
     //entry
     public Transform left_entry;
@@ -21,48 +21,64 @@ public class SideWalkManager : MonoBehaviour
     public int person_speed; //行人移動速度
     public int total_person; //總人數
     // store
-    private List<GameObject> all_people;
+    public List<GameObject> all_people;
     private void Start()
     {
-        
+        CreatePerson(TrashType.normal, false);
     }
     /// <summary>
     /// 
     /// </summary>
     /// <param name="type"></param>
-    /// <param name="entry">0 is left 1 is right</param>
-    public void CreatePerson(TrashType type, bool entry)
+    /// <param name="dir">0 is left 1 is right</param>
+    public void CreatePerson(TrashType type, bool dir)
     {
         GameObject new_person;
-        if (!entry)
+        Transform entry;
+        int walker_speed = 0;
+        if (!dir) // left
         {
-            new_person = Instantiate(person, left_entry,false);
-            new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(person_speed, 0);
+            entry = left_entry;
+            walker_speed = person_speed;
+
         }
-        else
+        else // right
         {
-            new_person = Instantiate(person, right_entry,false);
-            new_person.GetComponent<Rigidbody2D>().velocity = new Vector2(-person_speed, 0);
+            entry = right_entry;
+            walker_speed = -person_speed;
         }
-        //new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
-       // new_person.GetComponent<PersonDisplay>().Show();
+
+        new_person = Instantiate(person, entry.position, Quaternion.identity);
+        new_person.GetComponent<Walker>().Walk(walker_speed); //要行人行走
+        new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
+        new_person.GetComponent<PersonDisplay>().Show();
+        new_person.GetComponent<PersonDisplay>().SetDir(dir);
+
         all_people.Add(new_person);
     }
 
     private Person FindPerson(TrashType type)
     {
+        Person person;
         switch (type)
         {
             case TrashType.normal:
-                return normal_person[Random.Range(0, normal_person.Count)];
+                person = normal_person[Random.Range(0, normal_person.Count)];
+                return person;
             case TrashType.recycle:
-                return recycle_person[Random.Range(0, recycle_person.Count)];
+                person = recycle_person[Random.Range(0, recycle_person.Count)];
+                return person;
             case TrashType.waste:
                 return waste_person[Random.Range(0, waste_person.Count)];
             default:
                 return null;
 
         }
+    }
+
+    public void DetectPeople()
+    {
+
     }
 
 
