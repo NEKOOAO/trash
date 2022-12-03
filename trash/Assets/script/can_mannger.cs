@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class can_mannger : MonoBehaviour
 {
-
-    public bool can_push = true;
-    public bool ishold = false;
+    private bool ishold = false;
     public GameObject player;
-    int col_time = 0;
-    Vector2 pos;
+    private int col_time = 0;
+    private Vector2 pos;
     SpriteRenderer SR;
 
     // Start is called before the first frame update
