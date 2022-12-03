@@ -6,8 +6,8 @@ public class player_mannger : MonoBehaviour
 {
     Vector2 pos;
     int now_can = 0;
-    bool incan1, incan2, incan3, holding = false;
-    public GameObject can1, can2, can3;
+    public bool incan1, incan2, incan3, holding = false;
+    public can_mannger[] canarr=new can_mannger[3];
     // Start is called before the first frame update
     void Start()
     {
@@ -15,14 +15,14 @@ public class player_mannger : MonoBehaviour
         incan2 = false;
         incan3 = false;
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
+    private void OnTriggerEnter2D(Collider2D collision) { 
         if (collision.gameObject.name == "trash_can1") incan1 = true;
         if (collision.gameObject.name == "trash_can2") incan2 = true;
         if (collision.gameObject.name == "trash_can3") incan3 = true;
-
+        Debug.Log(collision.gameObject.name);
+        Debug.Log("coll");
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.name == "trash_can1") incan1 = false;
         if (collision.gameObject.name == "trash_can2") incan2 = false;
@@ -34,7 +34,7 @@ public class player_mannger : MonoBehaviour
         if (incan1) now_can = 1;
         else if (incan2) now_can = 2;
         else if (incan3) now_can = 3;
-        else now_can = -1;
+        else now_can = 0;
         pos = transform.position;
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -45,11 +45,16 @@ public class player_mannger : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-
+            if (holding) { }
+            else take_up_can();
         }
     }
     void take_up_can()
     {
-
+        if (now_can != 0)
+        {
+            canarr[now_can-1].hold();
+            holding = true;
+        }
     }
 }

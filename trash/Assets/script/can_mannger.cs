@@ -29,6 +29,10 @@ public class can_mannger : MonoBehaviour
     }
     public void hold()
     {
-
+        ishold = true;
+    }
+    public void push()
+    {
+        ishold = false;
     }
 }
