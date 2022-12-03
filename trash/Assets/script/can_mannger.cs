@@ -10,11 +10,13 @@ public class can_mannger : MonoBehaviour
     public GameObject player;
     int col_time = 0;
     Vector2 pos;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("can")) col_time++;
@@ -24,9 +26,11 @@ public class can_mannger : MonoBehaviour
         if (collision.CompareTag("can")) col_time--;
     }
 
+
     // Update is called once per frame
     void Update()
     {
+
         pos = transform.position;
         if (ishold)
         {
@@ -48,5 +52,6 @@ public class can_mannger : MonoBehaviour
             return true;
         }
         else return false;
+
     }
 }
