@@ -10,16 +10,22 @@ public class can_mannger : MonoBehaviour
     public GameObject player;
     int col_time = 0;
     Vector2 pos;
+    SpriteRenderer SR;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        SR = gameObject.GetComponent<SpriteRenderer>();
+        SR.sortingLayerName = "can";
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("can")) col_time++;
+        else if (collision.CompareTag("trash"))
+        {
+
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -28,9 +34,7 @@ public class can_mannger : MonoBehaviour
 
 
     // Update is called once per frame
-    void Update()
-    {
-
+    void Update(){
         pos = transform.position;
         if (ishold)
         {
@@ -43,15 +47,16 @@ public class can_mannger : MonoBehaviour
     public void hold()
     {
         ishold = true;
+        SR.sortingLayerName = "hold_can";
     }
     public bool push()
     {
         if (col_time == 0)
         {
             ishold = false;
+            SR.sortingLayerName = "can";
             return true;
         }
         else return false;
-
     }
 }

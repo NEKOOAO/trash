@@ -5,7 +5,6 @@ using UnityEngine;
 public class player_mannger : MonoBehaviour
 {
     Vector2 pos;
-
     int now_can = 0, hold_can;
     public bool incan1, incan2, incan3, holding = false;
     public can_mannger[] canarr = new can_mannger[3];
@@ -23,8 +22,6 @@ public class player_mannger : MonoBehaviour
         if (collision.gameObject.name == "trash_can1") incan1 = true;
         if (collision.gameObject.name == "trash_can2") incan2 = true;
         if (collision.gameObject.name == "trash_can3") incan3 = true;
-        Debug.Log(collision.gameObject.name);
-        Debug.Log("coll");
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -41,11 +38,11 @@ public class player_mannger : MonoBehaviour
         else now_can = 0;
 
         pos = transform.position;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) && pos.x>-8.15f)
         {
             transform.position = new Vector2(pos.x - 10 * Time.deltaTime, pos.y);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) && pos.x<8.15f)
         {
             transform.position = new Vector2(pos.x + 10 * Time.deltaTime, pos.y);
         }
