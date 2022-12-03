@@ -5,7 +5,7 @@ using UnityEngine;
 public class player_mannger : MonoBehaviour
 {
     Vector2 pos;
-    int now_can = 0;
+    int now_can = 0,hold_can;
     public bool incan1, incan2, incan3, holding = false;
     public can_mannger[] canarr=new can_mannger[3];
     // Start is called before the first frame update
@@ -45,7 +45,7 @@ public class player_mannger : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (holding) { }
+            if (holding) push_can();
             else take_up_can();
         }
     }
@@ -55,6 +55,11 @@ public class player_mannger : MonoBehaviour
         {
             canarr[now_can-1].hold();
             holding = true;
+            hold_can = now_can;
         }
+    }
+    void push_can()
+    {
+        if (canarr[hold_can - 1].push()) holding = false;
     }
 }
