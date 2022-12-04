@@ -7,6 +7,7 @@ public class handler : MonoSingleton<handler>
 {
     //manager
     public SideWalkManager sideWalkManager;
+    public Camera came;
     public int game_full_time;
     public int second_per_person;
     public Text Timer_text;
@@ -32,7 +33,8 @@ public class handler : MonoSingleton<handler>
             game_time-=1;
             if(game_time%second_per_person==0)
             {
-                int temp=Random.Range(0,3),i=Random.Range(-Screen.width/3,Screen.width/3);
+                int temp=Random.Range(0,3);
+                float random_width=Random.Range(-came.sensorSize.x/3,came.sensorSize.x/3);
                 bool right;
                 TrashType type=TrashType.normal;
                 switch(temp)
@@ -52,7 +54,7 @@ public class handler : MonoSingleton<handler>
                     right=false;
                 else
                     right=true;
-                sideWalkManager.CreatePerson(type,right,i*Vector2.right);
+                sideWalkManager.CreatePerson(type,right,random_width*Vector2.right);
                 //生成一個隨機的行人
                 //傳入3個參數
                 //確定左邊/右邊、丟垃圾的位置,的垃圾類型
