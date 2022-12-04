@@ -6,6 +6,7 @@ public class Walker : MonoBehaviour
 {
     public bool IsThrow = true;
     public Vector2 throw_position = Vector2.zero;
+    private int speed;
 
     [SerializeField]
     private Person person;
@@ -16,6 +17,7 @@ public class Walker : MonoBehaviour
     }
     public void Walk(int speed)
     {
+        this.speed = speed;
         this.GetComponent<Rigidbody2D>().velocity = speed * Vector2.right;
     }
 
@@ -35,5 +37,13 @@ public class Walker : MonoBehaviour
         new_trash.GetComponent<Rigidbody2D>().velocity = velocity;
         IsThrow = false;
 
+        StartCoroutine(WaitSec());
+        
+
+    }
+
+    IEnumerator WaitSec(){
+        yield return new WaitForSeconds(1);
+        Walk(speed);
     }
 }

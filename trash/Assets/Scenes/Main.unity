@@ -1270,6 +1270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sideWalkManager: {fileID: 1284817602}
+  came: {fileID: 505839002}
   game_full_time: 60
   second_per_person: 2
   Timer_text: {fileID: 750828000}
