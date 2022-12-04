@@ -24,14 +24,14 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
     public List<GameObject> all_people;
     private void Start()
     {
-        CreatePerson(TrashType.normal, false);
+        Debug.LogFormat("w:{0},h:{1}", Screen.width, Screen.height);
     }
     /// <summary>
     /// 
     /// </summary>
     /// <param name="type"></param>
     /// <param name="dir">0 is left 1 is right</param>
-    public void CreatePerson(TrashType type, bool dir)
+    public void CreatePerson(TrashType type, bool dir,Vector2 throw_position)
     {
         GameObject new_person;
         Transform entry;
@@ -49,15 +49,16 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
         }
 
         new_person = Instantiate(person, entry.position, Quaternion.identity);
+        new_person.GetComponent<Walker>().throw_position = throw_position; //告訴行人丟東西地點
         new_person.GetComponent<Walker>().Walk(walker_speed); //要行人行走
-        new_person.GetComponent<PersonDisplay>().person = FindPerson(type);//隨機找一個對應類型玩家
+        new_person.GetComponent<PersonDisplay>().person = FindRandomPerson(type);//隨機找一個對應類型玩家
         new_person.GetComponent<PersonDisplay>().Show();
         new_person.GetComponent<PersonDisplay>().SetDir(dir);
 
         all_people.Add(new_person);
     }
     
-    private Person FindPerson(TrashType type)
+    private Person FindRandomPerson(TrashType type)
     {
         Person person;
         switch (type)
@@ -75,15 +76,52 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
 
         }
     }
+
     public void DeletePerson(GameObject person)
     {
         Destroy(person);
         all_people.Remove(person);
     }
-    public void DetectPeople()
-    {
 
+    public void DetectThrow()
+    {
+        foreach (GameObject item in all_people)
+        {
+            float x_poisiotn = item.transform.position.x;
+            bool dir = item.GetComponent<PersonDisplay>().Direction;
+            float throw_position = item.GetComponent<Walker>().throw_position.x;
+            TrashType type = item.GetComponent<PersonDisplay>().person.type;
+            //
+            Vector2 test = Vector2.zero;
+            if (!dir && throw_position>=x_poisiotn)
+            {
+                item.GetComponent<Walker>().Throw(trash, Vector2.zero, FindRandomTrash(type));
+            }
+            else if (dir && throw_position <= x_poisiotn)
+            {
+                item.GetComponent<Walker>().Throw(trash, Vector2.zero, FindRandomTrash(type));
+            }
+        }
     }
 
+    private Trash FindRandomTrash(TrashType type)
+    {
+        Trash trash;
+        switch (type)
+        {
+            case TrashType.normal:
+                trash = normal_trash[Random.Range(0, normal_trash.Count)];
+                break;
+            case TrashType.recycle:
+                trash = recycle_trash[Random.Range(0, recycle_trash.Count)];
+                break;
+            case TrashType.waste:
+                trash = waste_trash[Random.Range(0, waste_trash.Count)];
+                break;
+            default:
+                return null;
 
+        }
+        return trash;
+    }
 }
