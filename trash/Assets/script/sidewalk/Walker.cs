@@ -5,7 +5,7 @@ using UnityEngine;
 public class Walker : MonoBehaviour
 {
 
-    Vector2 throw_position = Vector2.zero;
+    public Vector2 throw_position = Vector2.zero;
     public void Walk(int speed)
     {
         this.GetComponent<Rigidbody2D>().velocity = speed * Vector2.right;
