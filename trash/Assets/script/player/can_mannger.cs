@@ -14,6 +14,8 @@ public class can_mannger : MonoBehaviour
         hold    -> player hold this can
         push    -> player try to push this can return sucess or not
      -------------------------*/
+
+    public TrashType this_can;
     private bool ishold = false;
     public GameObject player;
     private int col_time = 0;
@@ -33,8 +35,18 @@ public class can_mannger : MonoBehaviour
         if (collision.CompareTag("can")) col_time++;
         else if (collision.CompareTag("trash"))
         {
-            Destroy(collision.gameObject);
+            if (this_can.Equals(collision.gameObject))
+            {
+                Debug.Log("11");
+            }
+            else
+            {
+                Debug.Log("WRONG");
+            }
+            Debug.Log(22);
+            //Destroy(collision.gameObject);
         }
+        Debug.Log(22);
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
