@@ -6,7 +6,7 @@ public class TrashDisplay : MonoBehaviour
 {
     public Trash trash;
     private float s_width;
-    private float pic_big=5;
+    private float pic_big=2.5f;
     private SpriteRenderer SR;
     private BoxCollider2D BC;
     public void Show()
