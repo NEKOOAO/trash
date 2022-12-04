@@ -38,10 +38,14 @@ public class can_mannger : MonoBehaviour
             Trash trash = collision.gameObject.GetComponent<TrashDisplay>().trash;
             if (trash.type.Equals(this_can))//equal type
             {
+                handler.Instance.AddScore();
+                //add 1
                 Debug.Log("same type");
             }
             else //different type
             {
+                //minus
+                handler.Instance.MinusScore();
                 Debug.Log("diff type");
             }
             //Destroy(collision.gameObject);
@@ -51,8 +55,9 @@ public class can_mannger : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("can")) col_time--;
+        //handler.instance.
     }
-
+    
     void Update(){
         // set pos if hold -> y pos to player head other y pos to floor
         pos = transform.position;

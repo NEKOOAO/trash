@@ -31,6 +31,7 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
     /// </summary>
     /// <param name="type"></param>
     /// <param name="dir">0 is left 1 is right</param>
+    //創造人並給對應的trash type與左方右方
     public void CreatePerson(TrashType type, bool dir,Vector2 throw_position)
     {
         GameObject new_person;
@@ -82,7 +83,8 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
         Destroy(person);
         all_people.Remove(person);
     }
-
+//偵測行人是否要丟垃圾，如果要丟就執行
+//每個update都跑一次即可
     public void DetectThrow()
     {
         foreach (GameObject item in all_people)

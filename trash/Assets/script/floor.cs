@@ -9,6 +9,7 @@ public class floor : MonoBehaviour
         if (collision.CompareTag("trash"))
         {
             //trash on ground
+            handler.Instance.MinusScore();
             Debug.Log("trash on ground");
            // Destroy(collision.gameObject);
         }
