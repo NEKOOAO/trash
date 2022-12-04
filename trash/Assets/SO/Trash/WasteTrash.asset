@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 619fb5b1e11df4695890084c25dae283, type: 3}
-  m_Name: normalperson
+  m_Script: {fileID: 11500000, guid: 1f5f7c07e2dd0418fa1e834fbcf189b3, type: 3}
+  m_Name: WasteTrash
   m_EditorClassIdentifier: 
-  type: 0
-  person_name: 000
-  sprite: {fileID: 21300000, guid: 8bf360463b5688844b2d6215c1a3f77c, type: 3}
+  type: 2
+  trash_name: "\u751F\u8089"
+  sprite: {fileID: 21300000, guid: 940064a80b43ecf4d995679a57f2aedc, type: 3}

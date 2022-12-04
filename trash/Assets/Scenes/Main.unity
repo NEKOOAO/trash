@@ -1250,10 +1250,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 03979fca045ae01449b04fce00c5c12a, type: 2}
   normal_trash:
   - {fileID: 11400000, guid: e57ff10d53e64419f9edbf8f8dbba771, type: 2}
+  - {fileID: 11400000, guid: aa2531a00802f9142b4452266efffaad, type: 2}
+  - {fileID: 11400000, guid: 305c2e97fa6614bb58efb51a3a19adbd, type: 2}
   recycle_trash:
   - {fileID: 11400000, guid: f4595d5c655c8454c8d4a7d2c04e852a, type: 2}
+  - {fileID: 11400000, guid: e8267f6ac35464793b6591901f7040d0, type: 2}
   waste_trash:
-  - {fileID: 11400000, guid: aa2531a00802f9142b4452266efffaad, type: 2}
+  - {fileID: 11400000, guid: a07e30f14051544f88fb1d9568037d56, type: 2}
   person_speed: 3
   total_person: 0
   all_people: []
