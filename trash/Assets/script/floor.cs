@@ -11,7 +11,7 @@ public class floor : MonoBehaviour
             //trash on ground
             handler.Instance.MinusScore();
             Debug.Log("trash on ground");
-           // Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
