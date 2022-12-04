@@ -34,7 +34,7 @@ public class handler : MonoSingleton<handler>
             if(game_time%second_per_person==0)
             {
                 int temp=Random.Range(0,3);
-                float random_width=Random.Range(-came.sensorSize.x/3,came.sensorSize.x/3);
+                float random_width=Random.Range(-came.sensorSize.x/4,came.sensorSize.x/4);
                 bool right;
                 TrashType type=TrashType.normal;
                 switch(temp)

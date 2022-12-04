@@ -48,7 +48,7 @@ public class can_mannger : MonoBehaviour
                 handler.Instance.MinusScore();
                 Debug.Log("diff type");
             }
-            //Destroy(collision.gameObject);
+            Destroy(collision.gameObject);
         }
         
     }
