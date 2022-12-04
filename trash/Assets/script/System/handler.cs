@@ -5,13 +5,18 @@ using UnityEngine.UI;
 
 public class handler : MonoSingleton<handler>
 {
-    public Text Timer;
+    public int game_full_time;
+    public Text Timer_text;
     public Text Score;
     double second=0;
+    private int game_time=0;
+    public int Game_Time{
+        get{return game_time;}
+    }
     // Start is called before the first frame update
     void Start()
     {
-        
+        InitGameTime();
     }
 
     // Update is called once per frame
@@ -20,13 +25,19 @@ public class handler : MonoSingleton<handler>
         second+=Time.deltaTime;
         if(second>=1)
         {
-            int temp=int.Parse(Timer.text);
-            temp--;
-            Timer.text=temp.ToString();
+            game_time-=1;
             second=0;
         }
+        ShowGameTime();
     }
-    
+    public void InitGameTime(){
+        this.game_time = game_full_time;
+    }
+
+    ///顯示遊戲當前時間
+    public void ShowGameTime(){
+        Timer_text = this.Game_Time.ToString() + "秒";
+    }
     public void AddScore()
     {
         ChangeScore(1);
