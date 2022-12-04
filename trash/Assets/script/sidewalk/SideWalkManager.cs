@@ -75,7 +75,11 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
 
         }
     }
-
+    public void DeletePerson(GameObject person)
+    {
+        Destroy(person);
+        all_people.Remove(person);
+    }
     public void DetectPeople()
     {
 
