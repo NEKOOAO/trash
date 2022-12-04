@@ -11,7 +11,9 @@ public class DeleteZone : MonoBehaviour
         Debug.Log("on collide");
         if (collision.GetComponent<PersonDisplay>() != null)
         {
-            Destroy(collision.gameObject);
+            //刪除由管理器做
+            SideWalkManager.Instance.DeletePerson(collision.gameObject);
+
         }
     }
 }

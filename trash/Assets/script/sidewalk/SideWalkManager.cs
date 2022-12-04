@@ -56,7 +56,7 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
 
         all_people.Add(new_person);
     }
-
+    
     private Person FindPerson(TrashType type)
     {
         Person person;
@@ -75,7 +75,11 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
 
         }
     }
-
+    public void DeletePerson(GameObject person)
+    {
+        Destroy(person);
+        all_people.Remove(person);
+    }
     public void DetectPeople()
     {
 
