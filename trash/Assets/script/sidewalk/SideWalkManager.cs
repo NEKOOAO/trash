@@ -27,7 +27,7 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
         Debug.LogFormat("w:{0},h:{1}", Screen.width, Screen.height);
     }
     /// <summary>
-    /// 
+    /// 創建行人,傳入參數:type,dir,throw_position(V2)
     /// </summary>
     /// <param name="type"></param>
     /// <param name="dir">0 is left 1 is right</param>
@@ -89,6 +89,9 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
     {
         foreach (GameObject item in all_people)
         {
+            if(! item.GetComponent<Walker>().IsThrow){
+                continue;
+            }
             float x_poisiotn = item.transform.position.x;
             bool dir = item.GetComponent<PersonDisplay>().Direction;
             float throw_position = item.GetComponent<Walker>().throw_position.x;

@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Walker : MonoBehaviour
 {
-
+    public bool IsThrow = true;
     public Vector2 throw_position = Vector2.zero;
+
+    private void Start() {
+        IsThrow = true;
+    }
     public void Walk(int speed)
     {
         this.GetComponent<Rigidbody2D>().velocity = speed * Vector2.right;
@@ -24,7 +28,7 @@ public class Walker : MonoBehaviour
         new_trash.GetComponent<TrashDisplay>().trash = trash_data;
         new_trash.GetComponent<TrashDisplay>().Show();
         new_trash.GetComponent<Rigidbody2D>().velocity = velocity;
-
+        IsThrow = false;
 
     }
 }

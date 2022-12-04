@@ -760,6 +760,7 @@ GameObject:
   - component: {fileID: 1284817601}
   - component: {fileID: 1284817602}
   - component: {fileID: 1284817603}
+  - component: {fileID: 1284817604}
   m_Layer: 0
   m_Name: System
   m_TagString: Untagged
@@ -800,12 +801,16 @@ MonoBehaviour:
   trash: {fileID: 8420020691706272683, guid: 2807538f9bb2e40588b75a7130c3249c, type: 3}
   normal_person:
   - {fileID: 11400000, guid: d5e3af2a8d7ee487ab8d89eacd72ba57, type: 2}
-  recycle_person: []
-  waste_person: []
+  recycle_person:
+  - {fileID: 11400000, guid: c5bbb0a7a9075094882423a367628fff, type: 2}
+  waste_person:
+  - {fileID: 11400000, guid: 03979fca045ae01449b04fce00c5c12a, type: 2}
   normal_trash:
   - {fileID: 11400000, guid: e57ff10d53e64419f9edbf8f8dbba771, type: 2}
-  recycle_trash: []
-  waste_trash: []
+  recycle_trash:
+  - {fileID: 11400000, guid: f4595d5c655c8454c8d4a7d2c04e852a, type: 2}
+  waste_trash:
+  - {fileID: 11400000, guid: aa2531a00802f9142b4452266efffaad, type: 2}
   person_speed: 3
   total_person: 0
   all_people: []
@@ -818,12 +823,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284817600}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2fa18a3b32cbe84c9433cf5bd59e911, type: 3}
+  m_Script: {fileID: 11500000, guid: 9db127ab3b0daf14fa1373834be4a7fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Timer: {fileID: 750828000}
+  sideWalkManager: {fileID: 1284817602}
+  game_full_time: 60
+  second_per_person: 2
+  Timer_text: {fileID: 750828000}
   Score: {fileID: 1352462053}
-  second: 0
+--- !u!50 &1284817604
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284817600}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0.5
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1352462051
 GameObject:
   m_ObjectHideFlags: 0
