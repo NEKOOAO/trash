@@ -16,6 +16,7 @@ public class handler : MonoSingleton<handler>
     public int Game_Time{
         get{return game_time;}
     }
+
     // Start is called before the first frame update
     void Start()
     {

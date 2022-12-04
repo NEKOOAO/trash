@@ -30,14 +30,13 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
     /// 創建行人,傳入參數:type,dir,throw_position(V2)
     /// </summary>
     /// <param name="type"></param>
-    /// <param name="dir">0 is left 1 is right</param>
-    //創造人並給對應的trash type與左方右方
+    /// <param name="dir">true 左邊生成往「右」走</param>
     public void CreatePerson(TrashType type, bool dir,Vector2 throw_position)
     {
         GameObject new_person;
         Transform entry;
         int walker_speed = 0;
-        if (!dir) // left
+        if (dir) // left
         {
             entry = left_entry;
             walker_speed = person_speed;
@@ -98,11 +97,11 @@ public class SideWalkManager : MonoSingleton<SideWalkManager>
             TrashType type = item.GetComponent<PersonDisplay>().person.type;
             //
             Vector2 test = Vector2.zero;
-            if (!dir && throw_position>=x_poisiotn)
+            if (!dir && throw_position>=x_poisiotn) //left
             {
                 item.GetComponent<Walker>().Throw(trash, Vector2.zero, FindRandomTrash(type));
             }
-            else if (dir && throw_position <= x_poisiotn)
+            else if (dir && throw_position <= x_poisiotn) //right
             {
                 item.GetComponent<Walker>().Throw(trash, Vector2.zero, FindRandomTrash(type));
             }
