@@ -35,18 +35,18 @@ public class can_mannger : MonoBehaviour
         if (collision.CompareTag("can")) col_time++;
         else if (collision.CompareTag("trash"))
         {
-            if (this_can.Equals(collision.gameObject))
+            Trash trash = collision.gameObject.GetComponent<TrashDisplay>().trash;
+            if (trash.type.Equals(this_can))//equal type
             {
-                Debug.Log("11");
+                Debug.Log("same type");
             }
-            else
+            else //different type
             {
-                Debug.Log("WRONG");
+                Debug.Log("diff type");
             }
-            Debug.Log(22);
             //Destroy(collision.gameObject);
         }
-        Debug.Log(22);
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
