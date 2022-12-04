@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 619fb5b1e11df4695890084c25dae283, type: 3}
-  m_Name: WastePerson
+  m_Name: normalPerson
   m_EditorClassIdentifier: 
   type: 0
-  person_name: wasteguy
-  sprite: {fileID: 21300000, guid: 3f3c26362e363a34682c950bdb07cf85, type: 3}
+  person_name: "\u666E\u901A\u4EBA\u4E00\u865F"
+  sprite: {fileID: 21300000, guid: 8bf360463b5688844b2d6215c1a3f77c, type: 3}
